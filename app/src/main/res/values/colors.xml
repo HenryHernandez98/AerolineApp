@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <!-- alternative colors -->
+    <color name="login_edit_text_color">#005662</color>
+
+
+    <color name="textColor">#595959</color>
+    <color name="colorBackground">#ffffff</color>
+    <color name="colorStatusBar">#10000000</color>
+
+    <!-- Reusable colors -->
+    <color name="placeholderImage">#c4c4c4</color>
+    <color name="textShadow">#737373</color>
+
+    <!-- basic colors -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#0FFFFFFF</color>zq
+    <!--Color to use in Login layout-->
+    <color name="loginContainerBackground">#f0ffffff</color>
+    <color name="loginContainerBorderColor">#2317b1f8</color>
+    <color name="activityLogin_container">#FFFFFF</color>
+    <color name="activityLogin_editText">#b6b3b3</color>
+
+    <color name="form_edit_text_color">#01afff</color>
+</resources>

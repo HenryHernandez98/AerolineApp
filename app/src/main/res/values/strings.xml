@@ -1,0 +1,19 @@
+<resources>
+
+    <!-- Restore password activity -->
+    <string name="app_name"> Aerolinea</string>
+    <string name="emailTittle">Correo Electrónico</string>
+    <string name="email">example@example.com</string>
+    <string name="send">Enviar Correo</string>
+    <string name="title_activity_restore_password">RestorePasswordActivity</string>
+    <string name="invalid_user_txt">Correo incorrecto</string>
+    <string name="password_invalid">Contraseña incorrecta</string>
+
+    <string name="title_activity_main">MainActivity</string>
+    <string name="activity_login_username_hint">Nombre de usuario</string>
+    <string name="activity_login_password_hint">Contraseña</string>
+    <string name="activity_signUp_button_text">Crear cuenta</string>
+    <string name="activity_login_button_text">Iniciar Sesión</string>
+    <string name="question_create_accaunt">Crear cuenta</string>
+    <string name="question_restore_password">¿olvidaste tu contraseña?</string>
+</resources>
