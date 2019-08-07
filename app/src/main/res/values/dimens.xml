@@ -10,4 +10,7 @@
     <dimen name="activity_login_bottom_layout_margin">15dp</dimen>
     <dimen name="activity_login_bottom_layout_elevation">12dp</dimen>
     <dimen name="activity_login_bottom_layout_text">18sp</dimen>
+
+    <dimen name="floating_action_btn_margin">16dp</dimen>
+    <dimen name="floating_action_btn_elevation">10dp</dimen>
 </resources>

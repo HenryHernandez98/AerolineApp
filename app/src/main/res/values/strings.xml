@@ -5,7 +5,7 @@
     <string name="emailTittle">Correo Electrónico</string>
     <string name="email">example@example.com</string>
     <string name="send">Enviar Correo</string>
-    <string name="title_activity_restore_password">RestorePasswordActivity</string>
+    <string name="txt_identity">Identidad</string>
     <string name="invalid_user_txt">Correo incorrecto</string>
     <string name="password_invalid">Contraseña incorrecta</string>
 
@@ -16,4 +16,20 @@
     <string name="activity_login_button_text">Iniciar Sesión</string>
     <string name="question_create_accaunt">Crear cuenta</string>
     <string name="question_restore_password">¿olvidaste tu contraseña?</string>
+
+    <!--Menu-->
+    <string name="Home">vuelos</string>
+    <string name="user_profile">Perfil</string>
+
+    <!--Spinner array-->
+    <string-array name="countries">
+        <item>Afganistán</item>
+        <item>Albania</item>
+        <item>Alemania</item>
+        <item>Andorra</item>
+        <item>Angola</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
