@@ -29,6 +29,7 @@
     <string name="text_view_identification">Ingrese su ID</string>
     <string name="text_view_sex">Ingrese su sexo</string>
     <string name="text_view_contry_code">Seleccione el codigo de su pais</string>
+    <string name="text_view_birth_place">Ingrese su lugar de nacimiento</string>
 
     <!--Menu-->
     <string name="Home">vuelos</string>

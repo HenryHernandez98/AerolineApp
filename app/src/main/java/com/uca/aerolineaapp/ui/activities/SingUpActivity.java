@@ -31,6 +31,7 @@ public class SingUpActivity extends AppCompatActivity {
     private EditText lastName;
     private EditText role;
     private Spinner nationality;
+    private EditText birthPlace;
     private EditText passport;
     private EditText issueDate;
     private EditText expDate;
@@ -64,6 +65,7 @@ public class SingUpActivity extends AppCompatActivity {
         lastName = findViewById(R.id.edit_text_last_name);
         role = findViewById(R.id.edit_text_role);
         nationality = findViewById(R.id.spinner_nationality);
+        birthPlace = findViewById(R.id.edit_text_birth_place);
         passport = findViewById(R.id.edit_text_passport);
         issueDate = findViewById(R.id.edit_text_issue_passport_date);
         expDate = findViewById(R.id.edit_text_exp_passport_date);
@@ -82,6 +84,7 @@ public class SingUpActivity extends AppCompatActivity {
         String LastName = lastName.getText().toString();
         String Role = role.getText().toString();
         String Nationality = nationality.toString();
+        String BirthPlace = birthPlace.getText().toString();
         String Passport = passport.getText().toString();
         String IssueDate = issueDate.getText().toString();
         String ExpDate = expDate.getText().toString();
@@ -90,7 +93,7 @@ public class SingUpActivity extends AppCompatActivity {
         String Sex = sex.getText().toString();
         String CountryCode = password.toString();
 
-        if(UserName.equals(" ")|| Password.equals("") || Email.equals("") || Name.equals("") || LastName.equals("") || Role.equals("")
+        if(UserName.equals(" ")|| Password.equals("") || Email.equals("") || Name.equals("") || LastName.equals("") || Role.equals("") || BirthPlace.equals("")
                 || Passport.equals("") || IssueDate.equals("") || ExpDate.equals("") || BirthDate.equals("") || Identification.equals("") || Sex.equals("")
             || Nationality.equals("Seleccionar...") || CountryCode.equals("Seleccionar...")) {
             Toast.makeText(getApplicationContext(),"Can't leave empty fields",Toast.LENGTH_SHORT).show();
@@ -106,6 +109,7 @@ public class SingUpActivity extends AppCompatActivity {
             user.setLastName(lastName.getText().toString());
             user.setRole(role.getText().toString());
             identity.setNationality(nationality.toString());
+            identity.setBirthPlace(birthPlace.getText().toString());
             identity.setPassportNumber(passport.getText().toString());
             identity.setIssuePassPortDate(issueDate.getText().toString());
             identity.setExpPassportDate(expDate.getText().toString());

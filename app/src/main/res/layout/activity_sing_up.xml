@@ -228,6 +228,27 @@
                    />
 
 
+
+                <TextView
+                    android:text="@string/text_view_birth_place"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/text_birth_place"
+                    android:typeface="sans"
+                    android:textColor="@color/login_edit_text_color"
+                    android:textSize="16sp"
+                    android:layout_margin="5dp"/>
+
+                <EditText
+                    android:id="@+id/edit_text_birth_place"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/activity_login_bottom_layout_height"
+                    android:inputType="number"
+                    android:textColor="@color/login_edit_text_color"
+                    android:background="@drawable/input_styles"
+                    android:textSize="16sp"/>
+
+
                 <TextView
                     android:text="@string/text_view_passport"
                     android:layout_width="match_parent"
