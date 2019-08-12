@@ -6,6 +6,8 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -36,14 +38,22 @@ public class SingUpActivity extends AppCompatActivity {
     private EditText identification;
     private EditText sex;
     private Spinner countryCode;
+    private Button signUpButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sing_up);
         initViews();
+        initAction();
     }
     public void   initAction(){
+        signUpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                postUser();
+            }
+        });
 
     }
     public void initViews(){
@@ -61,32 +71,33 @@ public class SingUpActivity extends AppCompatActivity {
         identification = findViewById(R.id.edit_text_identification);
         sex = findViewById(R.id.edit_text_sex);
         countryCode = findViewById(R.id.spinner_country_code);
+        signUpButton = findViewById(R.id.create_account);
     }
 
     private void postUser() {
-        String UserName = String.valueOf(userName.getText().toString());
-        String Password = String.valueOf(password.getText().toString());
-        String Email = String.valueOf(email.getText().toString());
-        String Name = String.valueOf(name.getText().toString());
-        String LastName = String.valueOf(lastName.getText().toString());
-        String Role = String.valueOf(role.getText().toString());
-        String Nationality = String.valueOf(nationality.toString());
-        String Passport = String.valueOf(passport.getText().toString());
-        String IssueDate = String.valueOf(issueDate.getText().toString());
-        String ExpDate = String.valueOf(expDate.getText().toString());
-        String BirthDate = String.valueOf(birthDate.getText().toString());
-        String Identification = String.valueOf(identification.getText().toString());
-        String Sex = String.valueOf(sex.getText().toString());
-        String CountryCode = String.valueOf(password.toString());
+        String UserName = userName.getText().toString();
+        String Password = password.getText().toString();
+        String Email = email.getText().toString();
+        String Name = name.getText().toString();
+        String LastName = lastName.getText().toString();
+        String Role = role.getText().toString();
+        String Nationality = nationality.toString();
+        String Passport = passport.getText().toString();
+        String IssueDate = issueDate.getText().toString();
+        String ExpDate = expDate.getText().toString();
+        String BirthDate = birthDate.getText().toString();
+        String Identification = identification.getText().toString();
+        String Sex = sex.getText().toString();
+        String CountryCode = password.toString();
 
         if(UserName.equals(" ")|| Password.equals("") || Email.equals("") || Name.equals("") || LastName.equals("") || Role.equals("")
                 || Passport.equals("") || IssueDate.equals("") || ExpDate.equals("") || BirthDate.equals("") || Identification.equals("") || Sex.equals("")
             || Nationality.equals("Seleccionar...") || CountryCode.equals("Seleccionar...")) {
             Toast.makeText(getApplicationContext(),"Can't leave empty fields",Toast.LENGTH_SHORT).show();
         }else {
-            User user = new User();
+            final User user = new User();
             Identity identity = new Identity();
-            Login login = new Login();
+            final Login login = new Login();
 
             login.setUserName(userName.getText().toString());
             user.setEmail(email.getText().toString());
@@ -104,65 +115,51 @@ public class SingUpActivity extends AppCompatActivity {
             identity.setCountryCode(countryCode.toString());
 
             Call<Identity> identityCall = Api.instance().saveIdentities(identity);
-            Call<Login> loginCall = Api.instance().saveLogin(login);
-            Call<User> userCall = Api.instance().saveUser(user);
-
             identityCall.enqueue(new Callback<Identity>() {
                 @Override
-                public void onResponse(Call<Identity> call, Response<Identity> response) {
-
+                public void onResponse(@NonNull Call<Identity> call, @NonNull Response<Identity> response) {
+                    assert response.body() != null;
+                    user.setIdIdentity(response.body().getIdIdentity());
                 }
 
                 @Override
-                public void onFailure(Call<Identity> call, Throwable t) {
+                public void onFailure(@NonNull Call<Identity> call, @NonNull Throwable t) {
 
                 }
             });
 
-
-
-            userCall.enqueue(new Callback<User>() {
+            Call<Login> loginCall = Api.instance().saveLogin(login);
+            loginCall.enqueue(new Callback<Login>() {
                 @Override
-                public void onResponse(Call<User> call, Response<User> response) {
+                public void onResponse(@NonNull Call<Login> call, @NonNull Response<Login> response) {
                     if (response.isSuccessful()) {
                         Toast.makeText(getApplicationContext(), "Success to Register", Toast.LENGTH_LONG).show();
-
-                        User user = new User();
-                        user.setName(name.getText().toString());
-                        user.setLastName(lastName.getText().toString());
-                        user.setEmail(email.getText().toString());
-                        user.setRole(role.getText().toString());
-                        user.setIdIdentity(response.body().getIdIdentity());
-                        user.seet
-
-                        Call<ContactsContract.Profile> profileCall = Api.instance().createProfile(profile);
-                        profileCall.enqueue(new Callback<ContactsContract.Profile>() {
-                            @Override
-                            public void onResponse(@NonNull Call<ContactsContract.Profile> call, @NonNull Response<ContactsContract.Profile> response) {
-                                if (response.isSuccessful()) {
-                                    Toast.makeText(getApplicationContext(), "Perfil creado", Toast.LENGTH_SHORT).show();
-                                    assert response.body() != null;
-                                    profile.setId(response.body().getId());
-                                } else {
-                                    Toast.makeText(getApplicationContext(), "An error occur while register was doing", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-
-                            @Override
-                            public void onFailure(@NonNull Call<ContactsContract.Profile> call, @NonNull Throwable t) {
-                                Log.e("Err", "Error to show");
-                            }
-                        });
-                        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                        startActivity(intent);
+                        assert response.body() != null;
+                        user.setIdLogin(response.body().getIdLogin());
                     } else {
                         Toast.makeText(getApplicationContext(), "An error occur while register was doing", Toast.LENGTH_SHORT).show();
                     }
                 }
 
                 @Override
-                public void onFailure(Call<User> call, Throwable t) {
+                public void onFailure(@NonNull Call<Login> call, @NonNull Throwable t) {
                     Log.e("Err", "Error to show");
+                }
+            });
+
+
+            Call<User> userCall = Api.instance().saveUser(user);
+            userCall.enqueue(new Callback<User>() {
+                @Override
+                public void onResponse(@NonNull Call<User> call, @NonNull Response<User> response) {
+                    if(response.code()==200){
+                        Toast.makeText(getApplicationContext(), "Success to create user", Toast.LENGTH_LONG).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(@NonNull Call<User> call, @NonNull Throwable t) {
+
                 }
             });
 
