@@ -1,11 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <TextView
-        android:text="Aqui pones lo que llevaría"
-        android:id="@+id/test"
+<android.support.v7.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:clickable="true"
+    android:foreground="?attr/selectableItemBackgroundBorderless"
+    app:cardCornerRadius="2dp"
+    app:cardElevation="2dp"
+    app:cardMaxElevation="2dp"
+    app:cardUseCompatPadding="true">
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-</android.support.constraint.ConstraintLayout>
+        android:layout_height="wrap_content"
+        android:padding="6dp"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="6dp"
+            android:weightSum="1">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="0.2"
+                android:textSize="16sp"
+                android:text="No. Vuelo"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/flight_number"
+                android:layout_width="0dp"
+                android:layout_weight="0.4"
+                android:textSize="16sp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/agency_name"
+                android:textAlignment="textEnd"
+                android:layout_width="0dp"
+                android:layout_weight="0.4"
+                android:layout_marginEnd="6dp"
+                android:text="Agencia"
+                android:textSize="16sp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="6dp"
+            android:weightSum="1">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="0.2"
+                android:textSize="16sp"
+                android:text="Origen"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/origin"
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
+                android:textSize="16sp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="0.2"
+                android:textSize="16sp"
+                android:text="Destino"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/destination"
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
+                android:textSize="16sp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="6dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="6dp"
+                android:weightSum="1">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:textSize="16sp"
+                    android:text="Hora de Salida"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/departure_hour"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:textSize="14sp"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="6dp"
+                android:weightSum="1">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:textSize="16sp"
+                    android:text="Hora de Llegada"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/arrive_hour"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:textSize="14sp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        
+    </LinearLayout>
+</android.support.v7.widget.CardView>

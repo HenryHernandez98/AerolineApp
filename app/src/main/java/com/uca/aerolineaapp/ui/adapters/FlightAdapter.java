@@ -14,22 +14,30 @@ import com.uca.aerolineaapp.models.Flight;
 import java.util.List;
 
 public class FlightAdapter extends RecyclerView.Adapter<FlightAdapter.ViewHolder>{
-    private List<Flight> flight;
+    private List<Flight> flights;
     private Context context;
 
-    public FlightAdapter(List<Flight> complaint, Context context) {
-        this.flight = complaint;
+    public FlightAdapter(List<Flight> flights, Context context) {
+        this.flights = flights;
         this.context = context;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
 
-        private TextView test;/*Este se va a borrar*/
+        private TextView flightNumber;
+        private TextView agency;
+        private TextView origin;
+        private TextView destination;
+        private TextView departure;
+        private TextView arrive;
         public ViewHolder (View view){
             super (view);
-            test = view.findViewById(R.id.test);
-
-
+            flightNumber = view.findViewById(R.id.flight_number);
+            agency = view.findViewById(R.id.agency_name);
+            origin = view.findViewById(R.id.origin);
+            destination = view.findViewById(R.id.destination);
+            departure = view.findViewById(R.id.departure_hour);
+            arrive = view.findViewById(R.id.arrive_hour);
         }
 
     }
@@ -43,13 +51,19 @@ public class FlightAdapter extends RecyclerView.Adapter<FlightAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull final FlightAdapter.ViewHolder holder, final int position) {
-        final Flight post = flight.get(position);
+        //final Flight flight = flights.get(position);
+
+        //holder.flightNumber.setText(flight.getFlightNumber());
+        //holder.origin.setText(flight.getOrigin());
+        //holder.destination.setText(flight.getDestination());
+        //holder.departure.setText(flight.getFlightDeparture());
+        //holder.arrive.setText(flight.getFlightArrive());
 
     }
 
     @Override
     public int getItemCount() {
-        return flight.size();
+        return flights.size();
     }
 
 

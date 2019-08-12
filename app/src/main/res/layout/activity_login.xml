@@ -10,7 +10,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:fillViewport="true"
         tools:ignore="UselessParent">
 
@@ -23,7 +23,7 @@
             <LinearLayout
                 android:id="@+id/activity_login_content"
                 android:layout_width="match_parent"
-                android:layout_height="700dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="15dp"
                 android:gravity="center"
                 android:orientation="vertical"
@@ -39,7 +39,7 @@
 
 
                 <TextView
-                    android:text="Email"
+                    android:text="Username"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView3"
@@ -50,14 +50,14 @@
 
 
                 <EditText
-                    android:id="@+id/email"
+                    android:id="@+id/username"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/activity_login_bottom_layout_height"
+                    android:layout_height="wrap_content"
                     android:layout_margin="3dp"
                     android:textColor="@color/login_edit_text_color"
                     android:background="@drawable/input_styles"
                     android:textSize="16sp"
-                    android:inputType="textEmailAddress"/>
+                    android:inputType="text"/>
 
 
                 <TextView
@@ -73,7 +73,7 @@
                 <EditText
                     android:id="@+id/password"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/activity_login_bottom_layout_height"
+                    android:layout_height="wrap_content"
                     android:inputType="textPassword"
                     android:textColor="@color/login_edit_text_color"
                     android:background="@drawable/input_styles"

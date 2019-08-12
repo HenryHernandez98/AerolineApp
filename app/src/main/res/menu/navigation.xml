@@ -11,6 +11,10 @@
             android:id="@+id/navigation_profile"
             android:icon="@drawable/ic_person_black_24dp"
             android:title="@string/user_profile"/>
+        <item
+            android:id="@+id/navigation_booking"
+            android:icon="@drawable/ic_flight_takeoff_black_24dp"
+            android:title="Reservas"/>
 
 
 </menu>

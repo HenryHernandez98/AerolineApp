@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class Api {
 
 
-    private final static String Url = "nuestra.api.xd";
+    private final static String Url = "http://192.168.1.3:7080/api";
 
     private static String getBase(){
         return Url + "/";

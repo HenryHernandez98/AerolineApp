@@ -40,7 +40,7 @@
 
 
                 <TextView
-                    android:text="Username"
+                    android:text="@string/text_view_Username"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/txt_username"
@@ -68,10 +68,31 @@
                     android:layout_margin="5dp"/>
 
                 <EditText
-                    android:id="@+id/edit_text_last_password"
+                    android:id="@+id/edit_text_password"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/activity_login_bottom_layout_height"
                     android:inputType="textPassword"
+                    android:textColor="@color/login_edit_text_color"
+                    android:background="@drawable/input_styles"
+                    android:textSize="16sp"
+                    />
+
+
+                <TextView
+                    android:text="@string/activity_login_email_hint"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/text_mail"
+                    android:typeface="sans"
+                    android:textColor="@color/login_edit_text_color"
+                    android:textSize="16sp"
+                    android:layout_margin="5dp"/>
+
+                <EditText
+                    android:id="@+id/edit_text_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/activity_login_bottom_layout_height"
+                    android:inputType="textEmailAddress"
                     android:textColor="@color/login_edit_text_color"
                     android:background="@drawable/input_styles"
                     android:textSize="16sp"
@@ -107,7 +128,7 @@
 
 
                 <TextView
-                    android:text="Edad"
+                    android:text="@string/text_view_age"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/text_view_age"
@@ -126,7 +147,7 @@
                     android:textSize="16sp"/>
 
                 <TextView
-                    android:text="Nombre"
+                    android:text="@string/text_view_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/text_name"
@@ -145,7 +166,7 @@
                     android:textSize="16sp"/>
 
                 <TextView
-                    android:text="Apellido"
+                    android:text="@string/text_view_lastname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/text_last_name"
@@ -153,6 +174,8 @@
                     android:textColor="@color/login_edit_text_color"
                     android:textSize="16sp"
                     android:layout_margin="5dp"/>
+
+
 
                 <EditText
                     android:id="@+id/edit_text_last_name"
@@ -162,6 +185,26 @@
                     android:textColor="@color/login_edit_text_color"
                     android:background="@drawable/input_styles"
                     android:textSize="16sp"/>
+
+                <TextView
+                    android:text="Rol"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/text_role"
+                    android:typeface="sans"
+                    android:textColor="@color/login_edit_text_color"
+                    android:textSize="16sp"
+                    android:layout_margin="5dp"/>
+
+                <EditText
+                    android:id="@+id/edit_text_role"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/activity_login_bottom_layout_height"
+                    android:inputType="text"
+                    android:textColor="@color/login_edit_text_color"
+                    android:background="@drawable/input_styles"
+                    android:textSize="16sp"/>
+
                 <TextView
                 android:text="Nacionalidad"
                 android:layout_width="match_parent"
@@ -174,7 +217,7 @@
                 android:layout_margin="5dp"/>
 
                 <Spinner
-                    android:id="@+id/sp_aves"
+                    android:id="@+id/spinner_nationality"
 
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
@@ -186,7 +229,7 @@
 
 
                 <TextView
-                    android:text="Pasaporte"
+                    android:text="@string/text_view_passport"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/text_last_passport"
@@ -196,7 +239,7 @@
                     android:layout_margin="5dp"/>
 
                 <EditText
-                    android:id="@+id/edit_text_last_passport"
+                    android:id="@+id/edit_text_passport"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/activity_login_bottom_layout_height"
                     android:inputType="number"
@@ -205,6 +248,123 @@
                     android:textSize="16sp"/>
 
 
+
+                <TextView
+                    android:text="@string/text_view_issue_passport_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/text_issue_passport_date"
+                    android:typeface="sans"
+                    android:textColor="@color/login_edit_text_color"
+                    android:textSize="16sp"
+                    android:layout_margin="5dp"/>
+                <EditText
+                    android:id="@+id/edit_text_issue_passport_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/activity_login_bottom_layout_height"
+                    android:inputType="text"
+                    android:textColor="@color/login_edit_text_color"
+                    android:background="@drawable/input_styles"
+                    android:textSize="16sp"/>
+
+
+                <TextView
+                    android:text="@string/text_view_exp_passport_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/text_exp_passport_date"
+                    android:typeface="sans"
+                    android:textColor="@color/login_edit_text_color"
+                    android:textSize="16sp"
+                    android:layout_margin="5dp"/>
+                <EditText
+                    android:id="@+id/edit_text_exp_passport_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/activity_login_bottom_layout_height"
+                    android:inputType="text"
+                    android:textColor="@color/login_edit_text_color"
+                    android:background="@drawable/input_styles"
+                    android:textSize="16sp"/>
+
+
+                <TextView
+                    android:text="@string/text_view_birth_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/text_birth_date"
+                    android:typeface="sans"
+                    android:textColor="@color/login_edit_text_color"
+                    android:textSize="16sp"
+                    android:layout_margin="5dp"/>
+                <EditText
+                    android:id="@+id/edit_text_birth_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/activity_login_bottom_layout_height"
+                    android:inputType="text"
+                    android:textColor="@color/login_edit_text_color"
+                    android:background="@drawable/input_styles"
+                    android:textSize="16sp"/>
+
+
+
+                <TextView
+                    android:text="@string/text_view_identification"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/text_view_identification"
+                    android:typeface="sans"
+                    android:textColor="@color/login_edit_text_color"
+                    android:textSize="16sp"
+                    android:layout_margin="5dp"/>
+                <EditText
+                    android:id="@+id/edit_text_identification"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/activity_login_bottom_layout_height"
+                    android:inputType="text"
+                    android:textColor="@color/login_edit_text_color"
+                    android:background="@drawable/input_styles"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:text="@string/text_view_sex"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/text_view_sex"
+                    android:typeface="sans"
+                    android:textColor="@color/login_edit_text_color"
+                    android:textSize="16sp"
+                    android:layout_margin="5dp"/>
+                <EditText
+                    android:id="@+id/edit_text_sex"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/activity_login_bottom_layout_height"
+                    android:inputType="text"
+                    android:textColor="@color/login_edit_text_color"
+                    android:background="@drawable/input_styles"
+                    android:textSize="16sp"/>
+
+
+                <TextView
+                    android:text="@string/text_view_contry_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/text_contry_code"
+                    android:typeface="sans"
+                    android:textColor="@color/login_edit_text_color"
+                    android:textSize="16sp"
+
+                    android:layout_margin="5dp"/>
+
+                <Spinner
+                    android:id="@+id/spinner_country_code"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:entries="@array/countryCodes"
+                    android:textColor="@color/login_edit_text_color"
+                    android:textColorHint="@color/login_edit_text_color"
+                    android:textSize="16sp"
+                    />
 
 
 
