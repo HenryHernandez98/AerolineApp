@@ -29,7 +29,7 @@ public class SingUpActivity extends AppCompatActivity {
     private EditText email;
     private EditText name;
     private EditText lastName;
-    private EditText role;
+    private Spinner role;
     private Spinner nationality;
     private EditText birthPlace;
     private EditText passport;
@@ -63,7 +63,7 @@ public class SingUpActivity extends AppCompatActivity {
         email = findViewById(R.id.edit_text_email);
         name = findViewById(R.id.edit_text_name);
         lastName = findViewById(R.id.edit_text_last_name);
-        role = findViewById(R.id.edit_text_role);
+        role = findViewById(R.id.spinner_roles);
         nationality = findViewById(R.id.spinner_nationality);
         birthPlace = findViewById(R.id.edit_text_birth_place);
         passport = findViewById(R.id.edit_text_passport);
@@ -82,7 +82,7 @@ public class SingUpActivity extends AppCompatActivity {
         String Email = email.getText().toString();
         String Name = name.getText().toString();
         String LastName = lastName.getText().toString();
-        String Role = role.getText().toString();
+        String Role = role.toString();
         String Nationality = nationality.toString();
         String BirthPlace = birthPlace.getText().toString();
         String Passport = passport.getText().toString();
@@ -107,7 +107,7 @@ public class SingUpActivity extends AppCompatActivity {
             login.setPassword(password.getText().toString());
             user.setName(name.getText().toString());
             user.setLastName(lastName.getText().toString());
-            user.setRole(role.getText().toString());
+            user.setRole(role.toString());
             identity.setNationality(nationality.toString());
             identity.setBirthPlace(birthPlace.getText().toString());
             identity.setPassportNumber(passport.getText().toString());
@@ -122,13 +122,22 @@ public class SingUpActivity extends AppCompatActivity {
             identityCall.enqueue(new Callback<Identity>() {
                 @Override
                 public void onResponse(@NonNull Call<Identity> call, @NonNull Response<Identity> response) {
-                    assert response.body() != null;
-                    user.setIdIdentity(response.body().getIdIdentity());
+                    if(response.code()==200){
+                        assert response.body() != null;
+                        user.setIdIdentity(response.body().getIdIdentity());
+                        Toast.makeText(getApplicationContext(), "Success to Register Identity", Toast.LENGTH_LONG).show();
+                    }
+                    else{
+                        Toast.makeText(getApplicationContext(), "Fail register" +
+                                "", Toast.LENGTH_LONG).show();
+                    }
+
                 }
 
                 @Override
                 public void onFailure(@NonNull Call<Identity> call, @NonNull Throwable t) {
-
+                    Log.e("ERROR", "Identity Failed");
+                    Toast.makeText(getApplicationContext(), "Fail identity", Toast.LENGTH_LONG).show();
                 }
             });
 
@@ -137,17 +146,19 @@ public class SingUpActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(@NonNull Call<Login> call, @NonNull Response<Login> response) {
                     if (response.isSuccessful()) {
-                        Toast.makeText(getApplicationContext(), "Success to Register", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Success to Register Login", Toast.LENGTH_LONG).show();
                         assert response.body() != null;
                         user.setIdLogin(response.body().getIdLogin());
                     } else {
-                        Toast.makeText(getApplicationContext(), "An error occur while register was doing", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Login Failed", Toast.LENGTH_SHORT).show();
+
                     }
                 }
 
                 @Override
                 public void onFailure(@NonNull Call<Login> call, @NonNull Throwable t) {
-                    Log.e("Err", "Error to show");
+                    Log.e("ERROR", "Login Failed");
+                    Toast.makeText(getApplicationContext(), "Fail LOgin", Toast.LENGTH_LONG).show();
                 }
             });
 
@@ -159,11 +170,15 @@ public class SingUpActivity extends AppCompatActivity {
                     if(response.code()==200){
                         Toast.makeText(getApplicationContext(), "Success to create user", Toast.LENGTH_LONG).show();
                     }
+                    else{
+                        Toast.makeText(getApplicationContext(), "Fail user", Toast.LENGTH_LONG).show();
+                    }
                 }
 
                 @Override
                 public void onFailure(@NonNull Call<User> call, @NonNull Throwable t) {
-
+                    Log.e("ERROR", "User Failed");
+                    Toast.makeText(getApplicationContext(), "Fail user", Toast.LENGTH_LONG).show();
                 }
             });
 

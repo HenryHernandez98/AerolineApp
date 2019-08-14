@@ -26,7 +26,7 @@
     <string name="text_view_lastname">Ingrese su apellido</string>
     <string name="text_view_exp_passport_date">Ingrese la fecha de expiracion de pasaporte</string>
     <string name="text_view_birth_date">Ingrese la fecha de nacimiento</string>
-    <string name="text_view_identification">Ingrese su ID</string>
+    <string name="text_view_identification">Ingrese su cedula</string>
     <string name="text_view_sex">Ingrese su sexo</string>
     <string name="text_view_contry_code">Seleccione el codigo de su pais</string>
     <string name="text_view_birth_place">Ingrese su lugar de nacimiento</string>
@@ -271,48 +271,48 @@
 
     <string-array name="countryCodes">
         <item>Seleccionar...</item>
-        <item>,AF</item>
-        <item>,AL</item>
-        <item>,DZ</item>
-        <item>,AD</item>
-        <item>,AO</item>
-        <item>,AQ</item>
-        <item>,AR</item>
-        <item>,AM</item>
-        <item>,AW</item>
-        <item>,AU</item>
-        <item>,AT</item>
-        <item>,AZ</item>
-        <item>,BH</item>
-        <item>,BD</item>
-        <item>,BY</item>
-        <item>,BE</item>
-        <item>,BZ</item>
-        <item>,BJ</item>
-        <item>,BT</item>
-        <item>,BO</item>
-        <item>,BA</item>
-        <item>,BW</item>
-        <item>,BR</item>
-        <item>,BN</item>
-        <item>,BG</item>
-        <item>,BF</item>
-        <item>,MM</item>
-        <item>,BI</item>
-        <item>,KH</item>
-        <item>,CM</item>
-        <item>,CA</item>
-        <item>,CV</item>
-        <item>,CF</item>
-        <item>,TD</item>
-        <item>,CL</item>
-        <item>,CN</item>
-        <item>,CX</item>
-        <item>,CC</item>
-        <item>,CO</item>
-        <item>,KM</item>
-        <item>,CG</item>
-        <item>,CD</item>
+        <item>AF</item>
+        <item>AL</item>
+        <item>DZ</item>
+        <item>AD</item>
+        <item>AO</item>
+        <item>AQ</item>
+        <item>AR</item>
+        <item>AM</item>
+        <item>AW</item>
+        <item>AU</item>
+        <item>AT</item>
+        <item>AZ</item>
+        <item>BH</item>
+        <item>BD</item>
+        <item>BY</item>
+        <item>BE</item>
+        <item>BZ</item>
+        <item>BJ</item>
+        <item>BT</item>
+        <item>BO</item>
+        <item>BA</item>
+        <item>BW</item>
+        <item>BR</item>
+        <item>BN</item>
+        <item>BG</item>
+        <item>BF</item>
+        <item>MM</item>
+        <item>BI</item>
+        <item>KH</item>
+        <item>CM</item>
+        <item>CA</item>
+        <item>CV</item>
+        <item>CF</item>
+        <item>TD</item>
+        <item>CL</item>
+        <item>CN</item>
+        <item>CX</item>
+        <item>CC</item>
+        <item>CO</item>
+        <item>KM</item>
+        <item>CG</item>
+        <item>CD</item>
         <item>CK</item>
         <item>CR</item>
         <item>HR</item>
@@ -400,84 +400,89 @@
         <item>NR</item>
         <item>NP</item>
         <item>NL</item>
-        <item>599,AN</item>
-        <item>687,NC</item>
-        <item>64,NZ</item>
-        <item>505,NI</item>
-        <item>227,NE</item>
-        <item>234,NG</item>
-        <item>683,NU</item>
-        <item>850,KP</item>
-        <item>47,NO</item>
-        <item>968,OM</item>
-        <item>92,PK</item>
-        <item>680,PW</item>
-        <item>507,PA</item>
-        <item>675,PG</item>
-        <item>595,PY</item>
-        <item>51,PE</item>
-        <item>63,PH</item>
-        <item>870,PN</item>
-        <item>48,PL</item>
-        <item>351,PT</item>
-        <item>1,PR</item>
-        <item>974,QA</item>
-        <item>40,RO</item>
-        <item>7,RU</item>
-        <item>250,RW</item>
-        <item>590,BL</item>
-        <item>685,WS</item>
-        <item>378,SM</item>
-        <item>239,ST</item>
-        <item>966,SA</item>
-        <item>221,SN</item>
-        <item>381,RS</item>
-        <item>248,SC</item>
-        <item>232,SL</item>
-        <item>65,SG</item>
-        <item>421,SK</item>
-        <item>386,SI</item>
-        <item>677,SB</item>
-        <item>252,SO</item>
-        <item>27,ZA</item>
-        <item>82,KR</item>
-        <item>34,ES</item>
-        <item>94,LK</item>
-        <item>290,SH</item>
-        <item>508,PM</item>
-        <item>249,SD</item>
-        <item>597,SR</item>
-        <item>268,SZ</item>
-        <item>46,SE</item>
-        <item>41,CH</item>
-        <item>963,SY</item>
-        <item>886,TW</item>
-        <item>992,TJ</item>
-        <item>255,TZ</item>
-        <item>66,TH</item>
-        <item>228,TG</item>
-        <item>690,TK</item>
-        <item>676,TO</item>
-        <item>216,TN</item>
-        <item>90,TR</item>
-        <item>993,TM</item>
-        <item>688,TV</item>
-        <item>971,AE</item>
-        <item>256,UG</item>
-        <item>44,GB</item>
-        <item>380,UA</item>
-        <item>598,UY</item>
-        <item>1,US</item>
-        <item>998,UZ</item>
-        <item>678,VU</item>
-        <item>39,VA</item>
-        <item>58,VE</item>
-        <item>84,VN</item>
-        <item>681,WF</item>
-        <item>967,YE</item>
-        <item>260,ZM</item>
-        <item>263,ZW</item>
+        <item>AN</item>
+        <item>NC</item>
+        <item>NZ</item>
+        <item>NI</item>
+        <item>NE</item>
+        <item>NG</item>
+        <item>NU</item>
+        <item>KP</item>
+        <item>NO</item>
+        <item>OM</item>
+        <item>PK</item>
+        <item>PW</item>
+        <item>PA</item>
+        <item>PG</item>
+        <item>PY</item>
+        <item>PE</item>
+        <item>PH</item>
+        <item>PN</item>
+        <item>PL</item>
+        <item>PT</item>
+        <item>PR</item>
+        <item>QA</item>
+        <item>RO</item>
+        <item>RU</item>
+        <item>RW</item>
+        <item>BL</item>
+        <item>WS</item>
+        <item>SM</item>
+        <item>ST</item>
+        <item>SA</item>
+        <item>SN</item>
+        <item>RS</item>
+        <item>SC</item>
+        <item>SL</item>
+        <item>SG</item>
+        <item>SK</item>
+        <item>SI</item>
+        <item>SB</item>
+        <item>SO</item>
+        <item>ZA</item>
+        <item>KR</item>
+        <item>ES</item>
+        <item>LK</item>
+        <item>SH</item>
+        <item>PM</item>
+        <item>SD</item>
+        <item>SR</item>
+        <item>SZ</item>
+        <item>SE</item>
+        <item>CH</item>
+        <item>SY</item>
+        <item>TW</item>
+        <item>TJ</item>
+        <item>TZ</item>
+        <item>TH</item>
+        <item>TG</item>
+        <item>TK</item>
+        <item>TO</item>
+        <item>TN</item>
+        <item>TR</item>
+        <item>TM</item>
+        <item>TV</item>
+        <item>AE</item>
+        <item>UG</item>
+        <item>GB</item>
+        <item>UA</item>
+        <item>UY</item>
+        <item>US</item>
+        <item>UZ</item>
+        <item>VU</item>
+        <item>VA</item>
+        <item>VE</item>
+        <item>VN</item>
+        <item>WF</item>
+        <item>YE</item>
+        <item>ZM</item>
+        <item>ZW</item>
     </string-array>
+
+    <string-array name="roles">
+    <item>Administrador</item>
+    <item>Cliente</item>
+</string-array>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
