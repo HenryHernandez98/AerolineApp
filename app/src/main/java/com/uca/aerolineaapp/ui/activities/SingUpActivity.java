@@ -134,7 +134,7 @@ public class SingUpActivity extends AppCompatActivity {
                         id.setIdentification(identification.getText().toString());
                         id.setSex(sex.getText().toString());
                         id.setCountryCode(countryCode.toString());
-                        Api.instance().saveIdentities(id);
+
 
                         Toast.makeText(getApplicationContext(), "Success to Register Identity", Toast.LENGTH_LONG).show();
                     }
@@ -162,7 +162,7 @@ public class SingUpActivity extends AppCompatActivity {
                         Login log = new Login();
                         log.setUserName(userName.getText().toString());
                         log.setPassword(password.getText().toString());
-                        Api.instance().saveLogin(log);
+
 
                     } else {
                         Toast.makeText(getApplicationContext(), "Login Failed", Toast.LENGTH_SHORT).show();
@@ -188,9 +188,10 @@ public class SingUpActivity extends AppCompatActivity {
                         us.setName(name.getText().toString());
                         us.setLastName(lastName.getText().toString());
                         us.setRole(role.toString());
-                        Api.instance().saveUser(us);
+
 
                         Toast.makeText(getApplicationContext(), "Success to create user", Toast.LENGTH_LONG).show();
+
 
                     }
                     else{
@@ -204,7 +205,9 @@ public class SingUpActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Fail user", Toast.LENGTH_LONG).show();
                 }
             });
-
+            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+            startActivity(intent);
+            finish();
         }
     }
 }

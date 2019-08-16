@@ -29,6 +29,6 @@ public interface ApiInterface {
     @POST("Identities")
     Call<Identity> saveIdentities (@Body Identity identity);
 
-    @POST("Logins")
+    @POST("SignUp")
     Call<Login> saveLogin (@Body Login login);
 }
