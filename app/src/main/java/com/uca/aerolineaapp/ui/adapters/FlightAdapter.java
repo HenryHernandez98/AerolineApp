@@ -56,7 +56,7 @@ public class FlightAdapter extends RecyclerView.Adapter<FlightAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull final FlightAdapter.ViewHolder holder, final int position) {
         final Flight flight = flights.get(position);
-        for(int i=0; i<=airlines.size(); i++){
+        for(int i=0; i<airlines.size(); i++){
             if(airlines.get(i).getIdAirline()==flight.getIdAirline()){
                 holder.airline.setText(airlines.get(i).getName());
             }
