@@ -54,7 +54,6 @@ public class HomeFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setHasFixedSize(true);
 
-
         Call<List<Flight>> getFlights = Api.instance().getFlights(Remember.getString("access_token", ""));
         getFlights.enqueue(new Callback<List<Flight>>() {
             @Override
@@ -62,9 +61,6 @@ public class HomeFragment extends Fragment {
                     flights = response.body();
                 FlightAdapter flightAdapter = new FlightAdapter(flights, getContext());
                 recyclerView.setAdapter(flightAdapter);
-
-
-
             }
 
             @Override
