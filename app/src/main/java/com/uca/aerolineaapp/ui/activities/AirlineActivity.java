@@ -41,6 +41,7 @@ public class AirlineActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 postAgency();
+                blankFields();
             }
         });
     }
@@ -62,6 +63,7 @@ public class AirlineActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<com.uca.aerolineaapp.models.Airline> call, Response<com.uca.aerolineaapp.models.Airline> response) {
                     if (response.body()!= null) {
+                        airline.setIdAirline(response.body().getIdAirline());
                         airline.setName(airlineName.getText().toString());
                         airline.setDescription(desc.getText().toString());
 
@@ -75,5 +77,10 @@ public class AirlineActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    public void blankFields(){
+        airlineName.setText("");
+        desc.setText("");
     }
 }
