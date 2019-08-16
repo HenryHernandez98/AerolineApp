@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
@@ -21,6 +22,7 @@ import com.uca.aerolineaapp.api.Api;
 import com.uca.aerolineaapp.constants.Constants;
 import com.uca.aerolineaapp.models.Airline;
 import com.uca.aerolineaapp.models.Flight;
+import com.uca.aerolineaapp.ui.activities.FlightActivity;
 import com.uca.aerolineaapp.ui.adapters.FlightAdapter;
 
 import java.util.ArrayList;
@@ -56,15 +58,15 @@ public class HomeFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setHasFixedSize(true);
 
-        Call<List<Airline>> getAirlines = Api.instance().getAirlines(Remember.getString("access_token", ""));
-        getAirlines.enqueue(new Callback<List<Airline>>() {
+        Call<List<Airline>> listCall = Api.instance().getAirlines(Remember.getString("access_token", ""));
+        listCall.enqueue(new Callback<List<Airline>>() {
             @Override
-            public void onResponse(Call<List<Airline>> call, Response<List<Airline>> response) {
-                airlines= response.body();
+            public void onResponse(@NonNull Call<List<Airline>> call, @NonNull Response<List<Airline>> response) {
+                airlines = response.body();
             }
 
             @Override
-            public void onFailure(Call<List<Airline>> call, Throwable t) {
+            public void onFailure(@NonNull Call<List<Airline>> call, @NonNull Throwable t) {
 
             }
         });
