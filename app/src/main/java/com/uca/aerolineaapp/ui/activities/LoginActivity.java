@@ -58,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
 
         initView();
         initAction();
-
+        validateSession();
     }
     public  void initView(){
     signIn = findViewById(R.id.signIn);
@@ -189,6 +189,13 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-
+    //This method validates that the session is active
+    private void validateSession() {
+        if (Remember.getString("access_token", "").isEmpty()) {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+        }
+    }
 
 }
