@@ -353,7 +353,7 @@
                     android:inputType="text"
                     android:textColor="@color/login_edit_text_color"
                     android:clickable="true"
-                    android:focusable="false"
+                    android:focusable="true"
                     android:background="@drawable/input_styles"
                     android:textSize="16sp"/>
 

@@ -52,8 +52,8 @@ public interface ApiInterface {
     @GET("Users/{id}")
     Call<User> getUSerbyId (@Header("Authorization") String authorization, @Path("id") int userId);
 
-    @GET("Identities/{id}")
-    Call<Identity> getUserIdentity(@Header("Authorization") String authorization, @Path("id") int id);
+    @GET("Identities")
+    Call<List<Identity>> getUserIdentity(@Header("Authorization") String authorization);
 
     @GET("SignUp")
     Call<List<Login>> getSignUp();

@@ -90,23 +90,6 @@
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="Small Text"/>
 
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="6dp"
-                    android:paddingEnd="15dp"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="20dp">
-
-                    <TextView
-                        android:id="@+id/nationality_text_view"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:text="Small Text" />
-                </LinearLayout>
-
 
             </LinearLayout>
 

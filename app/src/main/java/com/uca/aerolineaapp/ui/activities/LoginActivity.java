@@ -159,17 +159,20 @@ public class LoginActivity extends AppCompatActivity {
                 }
             });
 
-            Call<Identity> getIdentity = Api.instance().getUserIdentity(Remember.getString("access_token", ""), idIdentity);
-            getIdentity.enqueue(new Callback<Identity>() {
+            Call<List<Identity>> getIdentity = Api.instance().getUserIdentity(Remember.getString("access_token", ""));
+            getIdentity.enqueue(new Callback<List<Identity>>() {
                 @Override
-                public void onResponse(@NonNull Call<Identity> call, @NonNull Response<Identity> response) {
+                public void onResponse(@NonNull Call<List<Identity>> call, @NonNull Response<List<Identity>> response) {
                     assert response.body() != null;
-                    Remember.putString(Constants.NATIONALITY, response.body().getNationality());
-                    Remember.putString(Constants.BIRTH_DATE, response.body().getBirthDate());
+                    for (int i=0; i<response.body().size(); i++){
+                        if(response.body().get(i).getIdIdentity()==idIdentity){
+                            Remember.putString(Constants.BIRTH_DATE, response.body().get(i).getBirthDate());
+                        }
+                    }
                 }
 
                 @Override
-                public void onFailure(@NonNull Call<Identity> call, @NonNull Throwable t) {
+                public void onFailure(@NonNull Call<List<Identity>> call, @NonNull Throwable t) {
 
                 }
             });
