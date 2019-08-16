@@ -18,9 +18,13 @@ import com.uca.aerolineaapp.R;
 import com.uca.aerolineaapp.api.Api;
 import com.uca.aerolineaapp.constants.Constants;
 import com.uca.aerolineaapp.models.AccessToken;
+import com.uca.aerolineaapp.models.Identity;
 import com.uca.aerolineaapp.models.Login;
 import com.uca.aerolineaapp.models.LoginRequest;
 import com.uca.aerolineaapp.models.User;
+
+import java.net.UnknownServiceException;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -33,6 +37,8 @@ public class LoginActivity extends AppCompatActivity {
     private EditText username;
     private EditText password;
     private AccessToken token;
+    private int loginId;
+    private int idIdentity;
 
 
     @Override
@@ -80,22 +86,39 @@ public class LoginActivity extends AppCompatActivity {
 
 
     private void login() {
-
-
         String email2 = (username.getText().toString());
         String pass2 = (password.getText().toString());
         if (email2.equals("") || pass2.equals("")) {
             Toast.makeText(getApplicationContext(), "Can't leave empty fields", Toast.LENGTH_SHORT).show();
         } else {
-            Login loginRequest = new Login();
+            final Login loginRequest = new Login();
             loginRequest.setUserName(username.getText().toString());
             loginRequest.setPassword(password.getText().toString());
             saveUserData(email2, pass2);
+
+            Call<List<Login>> signUpCall = Api.instance().getSignUp();
+            signUpCall.enqueue(new Callback<List<Login>>() {
+                @Override
+                public void onResponse(@NonNull Call<List<Login>> call, @NonNull Response<List<Login>> response) {
+                    for(int i=0; i<response.body().size(); i++){
+                        if(loginRequest.getUserName().equals(response.body().get(i).getUserName())){
+                            loginId=response.body().get(i).getIdLogin();
+                        }
+                    }
+                }
+
+                @Override
+                public void onFailure(@NonNull Call<List<Login>> call, @NonNull Throwable t) {
+
+                }
+            });
+
             Call<String> accessTokenCall = Api.instance().token(loginRequest);
             accessTokenCall.enqueue(new Callback<String>() {
                 @Override
-                public void onResponse(Call<String> call, Response<String> response) {
+                public void onResponse(@NonNull Call<String> call, @NonNull Response<String> response) {
                     if (response.isSuccessful()) {
+                        Remember.putString(Constants.USERNAME, loginRequest.getUserName());
                         Remember.putString("access_token", response.body(), new Remember.Callback() {
                             @Override
                             public void apply(Boolean success) {
@@ -114,6 +137,40 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onFailure(Call<String> call, Throwable t) {
                     Log.e("Err", "No se puede:( ", t);
+                }
+            });
+
+            Call<List<User>> getUsers = Api.instance().getUsers(Remember.getString("access_token",""));
+            getUsers.enqueue(new Callback<List<User>>() {
+                @Override
+                public void onResponse(@NonNull Call<List<User>> call, @NonNull Response<List<User>> response) {
+                    for(int i=0; i<response.body().size(); i++){
+                        if(loginId==response.body().get(i).getIdLogin()){
+                            idIdentity = response.body().get(i).getIdIdentity();
+                            Remember.putString(Constants.NAME, response.body().get(i).getName());
+                            Remember.putString(Constants.EMAIL, response.body().get(i).getEmail());
+                        }
+                    }
+                }
+
+                @Override
+                public void onFailure(@NonNull Call<List<User>> call, @NonNull Throwable t) {
+
+                }
+            });
+
+            Call<Identity> getIdentity = Api.instance().getUserIdentity(Remember.getString("access_token", ""), idIdentity);
+            getIdentity.enqueue(new Callback<Identity>() {
+                @Override
+                public void onResponse(@NonNull Call<Identity> call, @NonNull Response<Identity> response) {
+                    assert response.body() != null;
+                    Remember.putString(Constants.NATIONALITY, response.body().getNationality());
+                    Remember.putString(Constants.BIRTH_DATE, response.body().getBirthDate());
+                }
+
+                @Override
+                public void onFailure(@NonNull Call<Identity> call, @NonNull Throwable t) {
+
                 }
             });
         }

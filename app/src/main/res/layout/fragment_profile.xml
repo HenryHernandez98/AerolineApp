@@ -17,7 +17,7 @@
 
                 <ImageView
                     android:layout_width="fill_parent"
-                    android:layout_height="250dp"
+                    android:layout_height="200dp"
                     android:id="@+id/coverImageView"
                     android:background="@color/colorPrimary"
                     android:layout_gravity="center_horizontal"
@@ -54,65 +54,57 @@
                     android:paddingLeft="15dp">
 
                     <TextView
+                        android:id="@+id/nameTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="Jose Perez"
-                        android:id="@+id/nameTextView"
                         android:textSize="18dp"
                         android:textColor="#010101" />
 
                     <TextView
+                        android:id="@+id/username_textview"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="6dp"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="coordinador"
-                        android:id="@+id/ageTextView"
                         android:textSize="18dp" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
+
+                <TextView
+                    android:id="@+id/text_birth_date"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingRight="15dp"
-                    android:paddingLeft="15dp"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:text="Small Text"
-                        android:id="@+id/distanceTextView"
-                        android:paddingRight="10dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:text="Small Text"
-                        android:id="@+id/activeTextView"
-                        android:paddingLeft="10dp" />
-                </LinearLayout>
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Small Text"
+                    android:paddingStart="6dp"
+                    android:paddingEnd="15dp" />
+                <TextView
+                    android:id="@+id/edit_text_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="6dp"
+                    android:paddingEnd="15dp"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Small Text"/>
 
                 <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="15dp"
-                    android:paddingRight="15dp"
+                    android:paddingStart="6dp"
+                    android:paddingEnd="15dp"
                     android:paddingTop="10dp"
                     android:paddingBottom="20dp">
 
                     <TextView
+                        android:id="@+id/nationality_text_view"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:text="Small Text"
-                        android:id="@+id/aboutTextView" />
+                        android:text="Small Text" />
                 </LinearLayout>
 
 

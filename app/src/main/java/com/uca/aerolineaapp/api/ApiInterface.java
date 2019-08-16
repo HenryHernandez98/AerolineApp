@@ -16,6 +16,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface ApiInterface {
 
@@ -47,4 +48,16 @@ public interface ApiInterface {
 
     @GET("Airlines")
     Call<List<Airline>> getAirlines(@Header("Authorization") String authorization);
+
+    @GET("Users/{id}")
+    Call<User> getUSerbyId (@Header("Authorization") String authorization, @Path("id") int userId);
+
+    @GET("Identities/{id}")
+    Call<Identity> getUserIdentity(@Header("Authorization") String authorization, @Path("id") int id);
+
+    @GET("SignUp")
+    Call<List<Login>> getSignUp();
+
+    @GET("Users")
+    Call<List<User>> getUsers(@Header("Authorization") String authorization);
 }
