@@ -23,7 +23,7 @@ public class FlightAdapter extends RecyclerView.Adapter<FlightAdapter.ViewHolder
         this.context = context;
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder{
+    static class ViewHolder extends RecyclerView.ViewHolder{
 
         private TextView flightNumber;
         private TextView agency;
@@ -31,7 +31,7 @@ public class FlightAdapter extends RecyclerView.Adapter<FlightAdapter.ViewHolder
         private TextView destination;
         private TextView departure;
         private TextView arrive;
-        public ViewHolder (View view){
+        ViewHolder(View view){
             super (view);
             flightNumber = view.findViewById(R.id.flight_number);
             agency = view.findViewById(R.id.agency_name);
