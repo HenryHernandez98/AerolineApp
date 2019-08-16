@@ -43,6 +43,7 @@ public class AirlineActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 postAgency();
+                blankFields();
             }
         });
     }
@@ -79,5 +80,10 @@ public class AirlineActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    public void blankFields(){
+        airlineName.setText("");
+        desc.setText("");
     }
 }

@@ -64,6 +64,7 @@ public class FlightActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 postFlight();
+                blankFields();
             }
         });
     }
@@ -105,6 +106,7 @@ public class FlightActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<Flight> call, Response<Flight> response) {
                     if (response.body()!= null) {
+                        flight.setIdFlight(response.body().getIdFlight());
                         flight.setDeparture(departure.getText().toString());
                         flight.setDestination(destination.getText().toString());
                         flight.setFlightNumber(flightNumber.getText().toString());
@@ -137,5 +139,17 @@ public class FlightActivity extends AppCompatActivity {
     public int idSpinner(){
         int id = 0;
         return id;
+    }
+
+    public void blankFields(){
+        departure.setText("");
+        destination.setText("");
+        flightNumber.setText("");
+        boardingTime.setText("");
+        gate.setText("");
+        zone.setText("");
+        departDateTime.setText("");
+        arriveDateTime.setText("");
+        capacity.setText("");
     }
 }
