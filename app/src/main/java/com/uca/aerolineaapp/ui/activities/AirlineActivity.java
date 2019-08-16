@@ -1,5 +1,6 @@
 package com.uca.aerolineaapp.ui.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -7,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.tumblr.remember.Remember;
 import com.uca.aerolineaapp.R;
 import com.uca.aerolineaapp.api.Api;
 import com.uca.aerolineaapp.models.Airline;
@@ -57,15 +59,17 @@ public class AirlineActivity extends AppCompatActivity {
             airline.setName(airlineName.getText().toString());
             airline.setDescription(desc.getText().toString());
 
-            Call<Airline> airlineCall = Api.instance().saveAirline(airline);
+            Call<Airline> airlineCall = Api.instance().saveAirline(airline, Remember.getString("access_token", ""));
             airlineCall.enqueue(new Callback<com.uca.aerolineaapp.models.Airline>() {
                 @Override
                 public void onResponse(Call<com.uca.aerolineaapp.models.Airline> call, Response<com.uca.aerolineaapp.models.Airline> response) {
                     if (response.body()!= null) {
+                        airline.setIdAirline(response.body().getIdAirline());
                         airline.setName(airlineName.getText().toString());
                         airline.setDescription(desc.getText().toString());
-
                         Toast.makeText(getApplicationContext(), "Se registró correctamente la Aerolinea", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(intent);
                     }
                 }
 

@@ -53,7 +53,7 @@ public class HomeFragment extends Fragment {
         newComplaintButton = view.findViewById(R.id.fab_add_reserve);
 
 
-        Call<List<Flight>> getFlights = Api.instance().getFlihts(Remember.getString("access_token", ""));
+        Call<List<Flight>> getFlights = Api.instance().getFlihts();
         getFlights.enqueue(new Callback<List<Flight>>() {
             @Override
             public void onResponse(@NonNull Call<List<Flight>> call, @NonNull Response<List<Flight>> response) {

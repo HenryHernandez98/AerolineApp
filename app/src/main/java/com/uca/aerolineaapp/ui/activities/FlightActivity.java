@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.tumblr.remember.Remember;
 import com.uca.aerolineaapp.R;
 import com.uca.aerolineaapp.api.Api;
 import com.uca.aerolineaapp.models.Airline;
@@ -99,7 +100,7 @@ public class FlightActivity extends AppCompatActivity {
             flight.setCapacity(Integer.parseInt(capacity.getText().toString()));
             flight.setIdAirline(idSpinner());
 
-            Call<Flight> flightCall = Api.instance().saveFlight(flight);
+            Call<Flight> flightCall = Api.instance().saveFlight(flight, Remember.getString("access_token", ""));
             flightCall.enqueue(new Callback<Flight>() {
                 @Override
                 public void onResponse(Call<Flight> call, Response<Flight> response) {
