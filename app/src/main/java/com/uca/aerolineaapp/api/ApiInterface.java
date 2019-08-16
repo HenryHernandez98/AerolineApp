@@ -42,8 +42,8 @@ public interface ApiInterface {
     @GET("Flights")
     Call<List<Flight>> getFlights(String auth);
 
-    @GET("Flight")
-    Call<List<Flight>> getFlihts();
+    @GET("Flights")
+    Call<List<Flight>> getFlihts(@Header("Authorization") String authorization);
 
     @POST("Airlines")
     Call<Airline> saveAirline(@Body Airline airline, @Header("Authorization") String authorization);
