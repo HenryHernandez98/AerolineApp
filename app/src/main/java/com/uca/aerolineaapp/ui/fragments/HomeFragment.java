@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,7 +32,7 @@ import retrofit2.Response;
 
 public class HomeFragment extends Fragment {
     private RecyclerView recyclerView;
-    private FloatingActionButton newComplaintButton;
+    private List<Flight> flights = new ArrayList<>();
 
 
     public HomeFragment() {
@@ -50,29 +51,31 @@ public class HomeFragment extends Fragment {
     }
     public void init(View view) {
         recyclerView = view.findViewById(R.id.recycler_view_home);
-        newComplaintButton = view.findViewById(R.id.fab_add_reserve);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setHasFixedSize(true);
 
 
         Call<List<Flight>> getFlights = Api.instance().getFlihts(Remember.getString("access_token", ""));
         getFlights.enqueue(new Callback<List<Flight>>() {
             @Override
             public void onResponse(@NonNull Call<List<Flight>> call, @NonNull Response<List<Flight>> response) {
-                if(response.code()==200){
-                    recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-                    recyclerView.setHasFixedSize(true);
-                    List<Flight> flights= response.body();
-                    FlightAdapter flightAdapter = new FlightAdapter(flights, getContext());
-                    recyclerView.setAdapter(flightAdapter);
-                }
+                    flights = response.body();
+                FlightAdapter flightAdapter = new FlightAdapter(flights, getContext());
+                recyclerView.setAdapter(flightAdapter);
+
+
+
             }
 
             @Override
             public void onFailure(Call<List<Flight>> call, Throwable t) {
                 Toast.makeText(getContext(), "Error flights call", Toast.LENGTH_SHORT).show();
+
             }
         });
 
        /*metodo para mandar a llamar en el api*/
+
     }
 
 

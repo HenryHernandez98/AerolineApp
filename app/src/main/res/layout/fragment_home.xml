@@ -30,12 +30,5 @@
 
     </android.support.v4.widget.NestedScrollView>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab_add_reserve"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        style="@style/Widget.Design.FloatingActionButton"
-        android:layout_margin="@dimen/floating_action_btn_margin"
-        app:srcCompat="@drawable/ic_add_black_24dp" />
+
 </FrameLayout>
