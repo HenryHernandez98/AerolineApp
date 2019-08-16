@@ -286,6 +286,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/activity_login_bottom_layout_height"
                     android:inputType="text"
+                    android:clickable="true"
+                    android:focusable="false"
                     android:textColor="@color/login_edit_text_color"
                     android:background="@drawable/input_styles"
                     android:textSize="16sp"/>
@@ -305,6 +307,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/activity_login_bottom_layout_height"
                     android:inputType="text"
+                    android:clickable="true"
+                    android:focusable="false"
                     android:textColor="@color/login_edit_text_color"
                     android:background="@drawable/input_styles"
                     android:textSize="16sp"/>
@@ -325,6 +329,8 @@
                     android:layout_height="@dimen/activity_login_bottom_layout_height"
                     android:inputType="text"
                     android:textColor="@color/login_edit_text_color"
+                    android:clickable="true"
+                    android:focusable="false"
                     android:background="@drawable/input_styles"
                     android:textSize="16sp"/>
 
@@ -345,6 +351,8 @@
                     android:layout_height="@dimen/activity_login_bottom_layout_height"
                     android:inputType="text"
                     android:textColor="@color/login_edit_text_color"
+                    android:clickable="true"
+                    android:focusable="false"
                     android:background="@drawable/input_styles"
                     android:textSize="16sp"/>
 

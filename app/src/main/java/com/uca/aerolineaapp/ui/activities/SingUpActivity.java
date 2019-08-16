@@ -1,13 +1,17 @@
 package com.uca.aerolineaapp.ui.activities;
 
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -17,6 +21,8 @@ import com.uca.aerolineaapp.api.Api;
 import com.uca.aerolineaapp.models.Identity;
 import com.uca.aerolineaapp.models.Login;
 import com.uca.aerolineaapp.models.User;
+
+import java.util.Calendar;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -56,6 +62,26 @@ public class SingUpActivity extends AppCompatActivity {
             }
         });
 
+        birthDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDatePickerDialog();
+            }
+        });
+
+        expDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDatePickerDialog();
+            }
+        });
+
+        issueDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDatePickerDialog();
+            }
+        });
     }
     public void initViews(){
         userName = findViewById(R.id.edit_text_user_name);
@@ -74,6 +100,7 @@ public class SingUpActivity extends AppCompatActivity {
         sex = findViewById(R.id.edit_text_sex);
         countryCode = findViewById(R.id.spinner_country_code);
         signUpButton = findViewById(R.id.create_account);
+
     }
 
     public void postUser(){
@@ -188,4 +215,23 @@ public class SingUpActivity extends AppCompatActivity {
             });
         }
     }
+
+
+    private void showDatePickerDialog() {
+        DatePickerFragment newFragment = DatePickerFragment.newInstance(new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                // +1 because january is zero
+                final String selectedDate = day + " / " + (month+1) + " / " + year;
+                birthDate.setText(selectedDate);
+                expDate.setText(selectedDate);
+                issueDate.setText(selectedDate);
+            }
+        });
+        newFragment.show(getSupportFragmentManager(), "datePicker");
+    }
+
+
+
+
 }
