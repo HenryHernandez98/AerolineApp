@@ -1,5 +1,6 @@
 package com.uca.aerolineaapp.ui.activities;
 
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.content.Intent;
 import android.support.design.widget.BottomNavigationView;
@@ -9,9 +10,11 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.uca.aerolineaapp.R;
 import com.uca.aerolineaapp.ui.fragments.HomeFragment;
+import com.uca.aerolineaapp.ui.fragments.NewAgencyFragment;
 import com.uca.aerolineaapp.ui.fragments.ProfileFragment;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
@@ -22,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private MenuItem menuItemLogOutAndForget;
     private MenuItem menuItemSendFarm;
     BottomNavigationView navigationView;
+    private FloatingActionButton newFlight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,10 +38,23 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         navigationView = findViewById(R.id.navigation);
         navigationView.setOnNavigationItemSelectedListener(this);
 
-
-
+        initViews();
+        initAction();
     }
 
+    private void initViews(){
+        newFlight = findViewById(R.id.new_flight);
+    }
+
+    private void initAction(){
+        newFlight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), FlightActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -53,6 +70,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         }  else if (id == R.id.navigation_profile) {
             Fragment fragmentProfile = new ProfileFragment();
             openFragment(fragmentProfile);
+        } else if (id == R.id.navigation_airline){
+            Intent intent = new Intent(getApplicationContext(), AirlineActivity.class);
+            startActivity(intent);
         }
 
 
