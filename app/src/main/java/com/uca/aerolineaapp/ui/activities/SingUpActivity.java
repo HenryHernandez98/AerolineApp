@@ -216,7 +216,6 @@ public class SingUpActivity extends AppCompatActivity {
         }
     }
 
-
     private void showDatePickerDialog() {
         DatePickerFragment newFragment = DatePickerFragment.newInstance(new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -230,8 +229,4 @@ public class SingUpActivity extends AppCompatActivity {
         });
         newFragment.show(getSupportFragmentManager(), "datePicker");
     }
-
-
-
-
 }

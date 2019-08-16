@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.uca.aerolineaapp.R;
 import com.uca.aerolineaapp.models.Flight;
@@ -22,7 +23,7 @@ public class FlightAdapter extends RecyclerView.Adapter<FlightAdapter.ViewHolder
         this.context = context;
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder{
+    static class ViewHolder extends RecyclerView.ViewHolder{
 
         private TextView flightNumber;
         private TextView agency;
@@ -30,7 +31,7 @@ public class FlightAdapter extends RecyclerView.Adapter<FlightAdapter.ViewHolder
         private TextView destination;
         private TextView departure;
         private TextView arrive;
-        public ViewHolder (View view){
+        ViewHolder(View view){
             super (view);
             flightNumber = view.findViewById(R.id.flight_number);
             agency = view.findViewById(R.id.agency_name);
@@ -51,13 +52,18 @@ public class FlightAdapter extends RecyclerView.Adapter<FlightAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull final FlightAdapter.ViewHolder holder, final int position) {
-        //final Flight flight = flights.get(position);
+        final Flight flight = flights.get(position);
 
-        //holder.flightNumber.setText(flight.getFlightNumber());
-        //holder.origin.setText(flight.getOrigin());
-        //holder.destination.setText(flight.getDestination());
-        //holder.departure.setText(flight.getFlightDeparture());
-        //holder.arrive.setText(flight.getFlightArrive());
+        try{
+            holder.flightNumber.setText(flight.getFlightNumber());
+            holder.origin.setText(flight.getDeparture());
+            holder.destination.setText(flight.getDestination());
+            holder.departure.setText(flight.getDepartDateTime());
+            holder.arrive.setText(flight.getArriveDateTime());
+        }
+        catch (Exception e){
+            Toast.makeText(context, "Error al mostrar vuelos", Toast.LENGTH_SHORT).show();
+        }
 
     }
 
