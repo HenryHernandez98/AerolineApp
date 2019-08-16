@@ -74,10 +74,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         } else if (id == R.id.navigation_airline){
             Intent intent = new Intent(getApplicationContext(), AirlineActivity.class);
             startActivity(intent);
-        } else if (id == R.id.navigation_booking) {
+        } /*else if (id == R.id.navigation_booking) {
             Fragment fragmentBooking = new NewReserveFragment();
             openFragment(fragmentBooking);
-        }
+        }*/
 
 
         return true;
@@ -108,8 +108,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private void clearSelected() {
         navigationView.getMenu().findItem(R.id.navigation_profile).setChecked(false);
         navigationView.getMenu().findItem(R.id.navigation_home).setChecked(false);
-        navigationView.getMenu().findItem(R.id.navigation_booking).setChecked(false);
+        //navigationView.getMenu().findItem(R.id.navigation_booking).setChecked(false);
     }
+
 
 
 }
