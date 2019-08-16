@@ -1,8 +1,10 @@
 package com.uca.aerolineaapp.ui.activities;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -14,6 +16,13 @@ import com.uca.aerolineaapp.api.Api;
 import com.uca.aerolineaapp.models.Airline;
 import com.uca.aerolineaapp.models.Flight;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.StringReader;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -35,6 +44,8 @@ public class FlightActivity extends AppCompatActivity {
     private EditText capacity;
     private Spinner airlineName;
     private Button create;
+
+    private List<Airline> airlineList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,7 +114,7 @@ public class FlightActivity extends AppCompatActivity {
             flight.setCapacity(Integer.parseInt(capacity.getText().toString()));
             flight.setIdAirline(idSpinner());
 
-            Call<Flight> flightCall = Api.instance().saveFlight(flight);
+            Call<Flight> flightCall = Api.instance().saveFlight(flight, Remember.getString("access_token", ""));
             flightCall.enqueue(new Callback<Flight>() {
                 @Override
                 public void onResponse(Call<Flight> call, Response<Flight> response) {
@@ -135,24 +146,33 @@ public class FlightActivity extends AppCompatActivity {
     }
 
     public void fillSpinnerAirlines(){
-        Call<List<Airline>> listCall = Api.instance().getAirlines(Remember.getString("access_token", ""));
+        final Call<List<Airline>> listCall = Api.instance().getAirlines(Remember.getString("access_token", ""));
         listCall.enqueue(new Callback<List<Airline>>() {
             @Override
-            public void onResponse(Call<List<Airline>> call, Response<List<Airline>> response) {
-
+            public void onResponse(@NonNull Call<List<Airline>> call, @NonNull Response<List<Airline>> response) {
+                ArrayList<String> airlines = new ArrayList<>();
+                airlineList = response.body();
+                for (int i=0; i<response.body().size(); i++){
+                    airlines.add(response.body().get(i).getName());
+                }
+                //Rellenar spinner
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(FlightActivity.this, android.R.layout.simple_dropdown_item_1line, airlines);
+                airlineName.setAdapter(adapter);
             }
 
             @Override
-            public void onFailure(Call<List<Airline>> call, Throwable t) {
+            public void onFailure(@NonNull Call<List<Airline>> call, @NonNull Throwable t) {
 
             }
         });
     }
 
     public int idSpinner(){
-        int id = 0;
-        return id;
+        int position = airlineName.getSelectedItemPosition();
+        position = airlineList.get(position).getIdAirline();
+        return position;
     }
+
 
     public void blankFields(){
         departure.setText("");
