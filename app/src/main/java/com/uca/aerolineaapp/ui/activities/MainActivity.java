@@ -15,6 +15,7 @@ import android.view.View;
 import com.uca.aerolineaapp.R;
 import com.uca.aerolineaapp.ui.fragments.HomeFragment;
 import com.uca.aerolineaapp.ui.fragments.NewAgencyFragment;
+import com.uca.aerolineaapp.ui.fragments.NewReserveFragment;
 import com.uca.aerolineaapp.ui.fragments.ProfileFragment;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
@@ -73,6 +74,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         } else if (id == R.id.navigation_airline){
             Intent intent = new Intent(getApplicationContext(), AirlineActivity.class);
             startActivity(intent);
+        } else if (id == R.id.navigation_booking) {
+            Fragment fragmentBooking = new NewReserveFragment();
+            openFragment(fragmentBooking);
         }
 
 

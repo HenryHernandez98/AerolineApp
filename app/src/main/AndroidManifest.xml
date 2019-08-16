@@ -16,13 +16,11 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
         </activity>
-
-        <activity android:name=".ui.activities.FlightActivity"
+        <activity android:name=".ui.activities.AirlineActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
         </activity>
-
-        <activity android:name=".ui.activities.AirlineActivity"
+        <activity android:name=".ui.activities.FlightActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
         </activity>

@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.tumblr.remember.Remember;
 import com.uca.aerolineaapp.R;
 import com.uca.aerolineaapp.api.Api;
 import com.uca.aerolineaapp.models.Airline;
@@ -63,6 +64,7 @@ public class FlightActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 postFlight();
+                blankFields();
             }
         });
     }
@@ -99,11 +101,12 @@ public class FlightActivity extends AppCompatActivity {
             flight.setCapacity(Integer.parseInt(capacity.getText().toString()));
             flight.setIdAirline(idSpinner());
 
-            Call<Flight> flightCall = Api.instance().saveFlight(flight);
+            Call<Flight> flightCall = Api.instance().saveFlight(flight, Remember.getString("access_token", ""));
             flightCall.enqueue(new Callback<Flight>() {
                 @Override
                 public void onResponse(Call<Flight> call, Response<Flight> response) {
                     if (response.body()!= null) {
+                        flight.setIdFlight(response.body().getIdFlight());
                         flight.setDeparture(departure.getText().toString());
                         flight.setDestination(destination.getText().toString());
                         flight.setFlightNumber(flightNumber.getText().toString());
@@ -136,5 +139,17 @@ public class FlightActivity extends AppCompatActivity {
     public int idSpinner(){
         int id = 0;
         return id;
+    }
+
+    public void blankFields(){
+        departure.setText("");
+        destination.setText("");
+        flightNumber.setText("");
+        boardingTime.setText("");
+        gate.setText("");
+        zone.setText("");
+        departDateTime.setText("");
+        arriveDateTime.setText("");
+        capacity.setText("");
     }
 }
