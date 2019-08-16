@@ -76,7 +76,7 @@ public class SingUpActivity extends AppCompatActivity {
         signUpButton = findViewById(R.id.create_account);
     }
 
-    private void postUser() {
+    public void postUser(){
         String UserName = userName.getText().toString();
         String Password = password.getText().toString();
         String Email = email.getText().toString();
@@ -92,22 +92,24 @@ public class SingUpActivity extends AppCompatActivity {
         String Identification = identification.getText().toString();
         String Sex = sex.getText().toString();
         String CountryCode = password.toString();
-
         if(UserName.equals(" ")|| Password.equals("") || Email.equals("") || Name.equals("") || LastName.equals("") || Role.equals("") || BirthPlace.equals("")
                 || Passport.equals("") || IssueDate.equals("") || ExpDate.equals("") || BirthDate.equals("") || Identification.equals("") || Sex.equals("")
-            || Nationality.equals("Seleccionar...") || CountryCode.equals("Seleccionar...")) {
-            Toast.makeText(getApplicationContext(),"Can't leave empty fields",Toast.LENGTH_SHORT).show();
-        }else {
+                || Nationality.equals("") || CountryCode.equals("")) {
+
+            Toast.makeText(getApplicationContext(),"No pueden haber campos vacios",Toast.LENGTH_SHORT).show();
+        }  else {
+
             final User user = new User();
-            Identity identity = new Identity();
+            final Identity identity = new Identity();
             final Login login = new Login();
 
             login.setUserName(userName.getText().toString());
-            user.setEmail(email.getText().toString());
             login.setPassword(password.getText().toString());
+            user.setEmail(email.getText().toString());
             user.setName(name.getText().toString());
             user.setLastName(lastName.getText().toString());
             user.setRole(role.toString());
+
             identity.setNationality(nationality.toString());
             identity.setBirthPlace(birthPlace.getText().toString());
             identity.setPassportNumber(passport.getText().toString());
@@ -118,70 +120,90 @@ public class SingUpActivity extends AppCompatActivity {
             identity.setSex(sex.getText().toString());
             identity.setCountryCode(countryCode.toString());
 
+            /*Crear una identidad*/
             Call<Identity> identityCall = Api.instance().saveIdentities(identity);
             identityCall.enqueue(new Callback<Identity>() {
                 @Override
-                public void onResponse(@NonNull Call<Identity> call, @NonNull Response<Identity> response) {
-                    if(response.code()==200){
-                        assert response.body() != null;
-                        user.setIdIdentity(response.body().getIdIdentity());
-                        Toast.makeText(getApplicationContext(), "Success to Register Identity", Toast.LENGTH_LONG).show();
-                    }
-                    else{
-                        Toast.makeText(getApplicationContext(), "Fail register" +
-                                "", Toast.LENGTH_LONG).show();
-                    }
+                public void onResponse(Call<Identity> call, Response<Identity> response) {
+                    if (response.body()!= null) {
 
+
+                        identity.setIdIdentity(response.body().getIdIdentity());
+                        identity.setNationality(nationality.toString());
+                        identity.setBirthPlace(birthPlace.getText().toString());
+                        identity.setPassportNumber(passport.getText().toString());
+                        identity.setIssuePassPortDate(issueDate.getText().toString());
+                        identity.setExpPassportDate(expDate.getText().toString());
+                        identity.setBirthDate(birthDate.getText().toString());
+                        identity.setIdentification(identification.getText().toString());
+                        identity.setSex(sex.getText().toString());
+                        identity.setCountryCode(countryCode.toString());
+                        Toast.makeText(getApplicationContext(), "Se registró correctamente la identidad", Toast.LENGTH_SHORT).show();
+
+
+
+                    }
                 }
 
                 @Override
-                public void onFailure(@NonNull Call<Identity> call, @NonNull Throwable t) {
-                    Log.e("ERROR", "Identity Failed");
-                    Toast.makeText(getApplicationContext(), "Fail identity", Toast.LENGTH_LONG).show();
+                public void onFailure(Call<Identity> call, Throwable t) {
+                    Toast.makeText(getApplicationContext(), "Error al registrarse", Toast.LENGTH_SHORT).show();
+
                 }
             });
-
+            /*Crear una usuaio*/
             Call<Login> loginCall = Api.instance().saveLogin(login);
             loginCall.enqueue(new Callback<Login>() {
                 @Override
-                public void onResponse(@NonNull Call<Login> call, @NonNull Response<Login> response) {
+                public void onResponse(Call<Login> call, Response<Login> response) {
                     if (response.isSuccessful()) {
-                        Toast.makeText(getApplicationContext(), "Success to Register Login", Toast.LENGTH_LONG).show();
-                        assert response.body() != null;
-                        user.setIdLogin(response.body().getIdLogin());
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Login Failed", Toast.LENGTH_SHORT).show();
-
+                        login.setIdLogin(response.body().getIdLogin());
+                        login.setUserName(userName.getText().toString());
+                        login.setPassword(password.getText().toString());
+                        Toast.makeText(getApplicationContext(), "Se creo login", Toast.LENGTH_LONG).show();
                     }
                 }
 
                 @Override
-                public void onFailure(@NonNull Call<Login> call, @NonNull Throwable t) {
-                    Log.e("ERROR", "Login Failed");
-                    Toast.makeText(getApplicationContext(), "Fail LOgin", Toast.LENGTH_LONG).show();
+                public void onFailure(Call<Login> call, Throwable t) {
+                    Toast.makeText(getApplicationContext(), "Error al craer login", Toast.LENGTH_SHORT).show();
                 }
             });
-
 
             Call<User> userCall = Api.instance().saveUser(user);
             userCall.enqueue(new Callback<User>() {
                 @Override
-                public void onResponse(@NonNull Call<User> call, @NonNull Response<User> response) {
-                    if(response.code()==200){
-                        Toast.makeText(getApplicationContext(), "Success to create user", Toast.LENGTH_LONG).show();
-                    }
-                    else{
-                        Toast.makeText(getApplicationContext(), "Fail user", Toast.LENGTH_LONG).show();
+                public void onResponse(Call<User> call, Response<User> response) {
+                    if (response.isSuccessful()) {
+
+
+                        user.setIdLogin(response.body().getIdLogin());
+                        user.setEmail(email.getText().toString());
+                        user.setName(name.getText().toString());
+                        user.setLastName(lastName.getText().toString());
+                        user.setRole(role.toString());
+
+                        Toast.makeText(getApplicationContext(), "usuario creado", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(intent);
                     }
                 }
 
                 @Override
-                public void onFailure(@NonNull Call<User> call, @NonNull Throwable t) {
-                    Log.e("ERROR", "User Failed");
-                    Toast.makeText(getApplicationContext(), "Fail user", Toast.LENGTH_LONG).show();
+                public void onFailure(Call<User> call, Throwable t) {
+                    Toast.makeText(getApplicationContext(), "Error en crear usuario", Toast.LENGTH_LONG).show();
                 }
             });
 
+
+
+
+
         }
+
+
+
+
     }
+
 }
