@@ -8,10 +8,13 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.tumblr.remember.Remember;
 import com.uca.aerolineaapp.R;
 import com.uca.aerolineaapp.api.Api;
 import com.uca.aerolineaapp.models.Airline;
 import com.uca.aerolineaapp.models.Flight;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -132,7 +135,18 @@ public class FlightActivity extends AppCompatActivity {
     }
 
     public void fillSpinnerAirlines(){
+        Call<List<Airline>> listCall = Api.instance().getAirlines(Remember.getString("access_token", ""));
+        listCall.enqueue(new Callback<List<Airline>>() {
+            @Override
+            public void onResponse(Call<List<Airline>> call, Response<List<Airline>> response) {
 
+            }
+
+            @Override
+            public void onFailure(Call<List<Airline>> call, Throwable t) {
+
+            }
+        });
     }
 
     public int idSpinner(){
