@@ -50,7 +50,7 @@ public class FlightActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sing_up);
+        setContentView(R.layout.activity_add_flight);
         initViews();
         initAction();
         fillSpinnerAirlines();
@@ -129,8 +129,6 @@ public class FlightActivity extends AppCompatActivity {
                         flight.setDepartDateTime(departDateTime.getText().toString());
                         flight.setArriveDateTime(arriveDateTime.getText().toString());
                         flight.setAvailability(availability);
-                        flight.setCapacity(Integer.parseInt(capacity.getText().toString()));
-                        flight.setIdAirline(idSpinner());
                         Toast.makeText(getApplicationContext(), "Se registró correctamente el vuelo", Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(getApplicationContext(), "Error al registrar el vuelo", Toast.LENGTH_SHORT).show();

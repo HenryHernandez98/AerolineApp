@@ -25,12 +25,12 @@
                 android:orientation="vertical"
                 android:padding="12dp">
                 <android.support.design.widget.TextInputLayout
-                    android:id="@+id/edit_text_flight_number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Numero de vuelo">
                     <EditText
                         android:layout_width="match_parent"
+                        android:id="@+id/edit_text_flight_number"
                         android:layout_height="wrap_content" />
                 </android.support.design.widget.TextInputLayout>
 
@@ -144,20 +144,22 @@
                         android:layout_height="wrap_content" />
                 </android.support.design.widget.TextInputLayout>
 
+                <Button
+                    android:id="@+id/button_create_flight"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/activity_login_bottom_layout_height"
+                    android:layout_height="@dimen/activity_login_bottom_layout_height"
+                    android:layout_margin="@dimen/activity_login_bottom_layout_margin"
+                    android:background="@drawable/login_button_styles"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:text="Aceptar"
+                    android:layout_gravity="bottom"/>
+
             </LinearLayout>
 
         </ScrollView>
     </LinearLayout>
 
-    <Button
-        android:id="@+id/button_create_flight"
-        android:layout_width="match_parent"
-        android:layout_marginTop="@dimen/activity_login_bottom_layout_height"
-        android:layout_height="@dimen/activity_login_bottom_layout_height"
-        android:layout_margin="@dimen/activity_login_bottom_layout_margin"
-        android:background="@drawable/login_button_styles"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:text="Aceptar"
-        android:layout_gravity="bottom"/>
+
 
 </FrameLayout>

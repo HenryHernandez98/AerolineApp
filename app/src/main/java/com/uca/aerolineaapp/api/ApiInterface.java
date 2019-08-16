@@ -40,14 +40,11 @@ public interface ApiInterface {
     Call<Flight> saveFlight(@Body Flight flight, @Header("Authorization") String authorization);
 
     @GET("Flights")
-    Call<List<Flight>> getFlights(String auth);
-
-    @GET("Flights")
-    Call<List<Flight>> getFlihts(@Header("Authorization") String authorization);
+    Call<List<Flight>> getFlights(@Header("Authorization") String authorization);
 
     @POST("Airlines")
     Call<Airline> saveAirline(@Body Airline airline, @Header("Authorization") String authorization);
 
     @GET("Airlines")
-    Call<List<Airline>> getAirlines(String auth);
+    Call<List<Airline>> getAirlines(@Header("Authorization") String authorization);
 }
