@@ -24,7 +24,7 @@ public class AirlineActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sing_up);
+        setContentView(R.layout.activity_new_airline);
         initViews();
         initAction();
     }

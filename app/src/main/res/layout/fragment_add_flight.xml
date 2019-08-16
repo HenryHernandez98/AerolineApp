@@ -25,7 +25,7 @@
         android:orientation="vertical"
         android:padding="12dp">
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/edit_text_flight_number"
+            android:id="@+id/edit_text_flight_numbe"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Numero de vuelo">
@@ -45,7 +45,7 @@
 
             android:layout_margin="5dp"/>
         <Spinner
-            android:id="@+id/spinner_airlines"
+            android:id="@+id/spinner_airline"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:textColor="@color/login_edit_text_color"
@@ -54,7 +54,7 @@
             />
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/edit_text_departure"
+            android:id="@+id/edit_text_departur"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Origen">
@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content" />
         </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/edit_text_destination"
+            android:id="@+id/edit_text_destinatio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Destino">
@@ -72,7 +72,7 @@
                 android:layout_height="wrap_content" />
         </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/edit_text_boarding_time"
+            android:id="@+id/edit_text_boarding_tim"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Hora de abordaje">
@@ -81,7 +81,7 @@
                 android:layout_height="wrap_content" />
         </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/edit_text_zone"
+            android:id="@+id/edit_text_zon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Zona">
@@ -90,7 +90,7 @@
                 android:layout_height="wrap_content" />
         </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/edit_text_gate"
+            android:id="@+id/edit_text_gat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Puerta">
@@ -99,7 +99,7 @@
                 android:layout_height="wrap_content" />
         </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/edit_text_depart_time"
+            android:id="@+id/edit_text_depart_tim"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Hora de salida">
@@ -108,7 +108,7 @@
                 android:layout_height="wrap_content" />
         </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/edit_text_arrive_time"
+            android:id="@+id/edit_text_arrive_tim"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Hora de llegada">
@@ -117,7 +117,7 @@
                 android:layout_height="wrap_content" />
         </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/edit_text_layover"
+            android:id="@+id/edit_text_layove"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Tiempo de escala">
@@ -126,7 +126,7 @@
                 android:layout_height="wrap_content" />
         </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/edit_text_capacity"
+            android:id="@+id/edit_text_capacit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Capacidad">
@@ -141,7 +141,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button_create_flight"
+        android:id="@+id/button_create_fligh"
         android:layout_width="match_parent"
         android:layout_marginTop="@dimen/activity_login_bottom_layout_height"
         android:layout_height="@dimen/activity_login_bottom_layout_height"

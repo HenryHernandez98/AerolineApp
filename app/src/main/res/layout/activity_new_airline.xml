@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.AddFlightFragment">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.activities.AirlineActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        <android.support.v7.widget.Toolbar    xmlns:android="http://schemas.android.com/apk/res/android"
+        <android.support.v7.widget.Toolbar
+            xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
@@ -21,7 +22,7 @@
             android:orientation="vertical"
             android:padding="12dp">
             <android.support.design.widget.TextInputLayout
-                android:id="@+id/edit_text_agency_nam"
+                android:id="@+id/edit_text_agency_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Nombre de la Agencia">
@@ -30,7 +31,7 @@
                     android:layout_height="wrap_content" />
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
-                android:id="@+id/edit_text_descriptio"
+                android:id="@+id/edit_text_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Descripcion">
@@ -44,7 +45,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button_create_agenc"
+        android:id="@+id/button_create_agency"
         android:layout_width="match_parent"
         android:layout_marginTop="@dimen/activity_login_bottom_layout_height"
 
