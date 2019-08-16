@@ -55,7 +55,7 @@ public class HomeFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
 
 
-        Call<List<Flight>> getFlights = Api.instance().getFlihts();
+        Call<List<Flight>> getFlights = Api.instance().getFlihts(Remember.getString("access_token",""));
         getFlights.enqueue(new Callback<List<Flight>>() {
             @Override
             public void onResponse(@NonNull Call<List<Flight>> call, @NonNull Response<List<Flight>> response) {
