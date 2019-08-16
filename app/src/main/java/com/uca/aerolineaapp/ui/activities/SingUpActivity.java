@@ -105,6 +105,7 @@ public class SingUpActivity extends AppCompatActivity {
 
             login.setUserName(userName.getText().toString());
             login.setPassword(password.getText().toString());
+
             user.setEmail(email.getText().toString());
             user.setName(name.getText().toString());
             user.setLastName(lastName.getText().toString());
@@ -126,8 +127,6 @@ public class SingUpActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<Identity> call, Response<Identity> response) {
                     if (response.body()!= null) {
-
-
                         identity.setIdIdentity(response.body().getIdIdentity());
                         identity.setNationality(nationality.toString());
                         identity.setBirthPlace(birthPlace.getText().toString());
@@ -139,18 +138,14 @@ public class SingUpActivity extends AppCompatActivity {
                         identity.setSex(sex.getText().toString());
                         identity.setCountryCode(countryCode.toString());
                         Toast.makeText(getApplicationContext(), "Se registró correctamente la identidad", Toast.LENGTH_SHORT).show();
-
-
-
                     }
                 }
-
                 @Override
                 public void onFailure(Call<Identity> call, Throwable t) {
                     Toast.makeText(getApplicationContext(), "Error al registrarse", Toast.LENGTH_SHORT).show();
-
                 }
             });
+
             /*Crear una usuaio*/
             Call<Login> loginCall = Api.instance().saveLogin(login);
             loginCall.enqueue(new Callback<Login>() {
@@ -163,7 +158,6 @@ public class SingUpActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Se creo login", Toast.LENGTH_LONG).show();
                     }
                 }
-
                 @Override
                 public void onFailure(Call<Login> call, Throwable t) {
                     Toast.makeText(getApplicationContext(), "Error al craer login", Toast.LENGTH_SHORT).show();
@@ -175,8 +169,6 @@ public class SingUpActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<User> call, Response<User> response) {
                     if (response.isSuccessful()) {
-
-
                         user.setIdLogin(response.body().getIdLogin());
                         user.setEmail(email.getText().toString());
                         user.setName(name.getText().toString());
@@ -194,16 +186,6 @@ public class SingUpActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Error en crear usuario", Toast.LENGTH_LONG).show();
                 }
             });
-
-
-
-
-
         }
-
-
-
-
     }
-
 }

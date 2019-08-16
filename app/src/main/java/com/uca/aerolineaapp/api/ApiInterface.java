@@ -1,6 +1,8 @@
 package com.uca.aerolineaapp.api;
 
 import com.uca.aerolineaapp.models.AccessToken;
+import com.uca.aerolineaapp.models.Airline;
+import com.uca.aerolineaapp.models.Flight;
 import com.uca.aerolineaapp.models.Identity;
 import com.uca.aerolineaapp.models.Login;
 import com.uca.aerolineaapp.models.LoginRequest;
@@ -29,7 +31,12 @@ public interface ApiInterface {
     @POST("Identities")
     Call<Identity> saveIdentities (@Body Identity identity);
 
-
     @POST("SignUp")
     Call<Login> saveLogin (@Body Login login);
+
+    @POST("Flights")
+    Call<Flight> saveFlight (@Body Flight flight);
+
+    @POST("Airlines")
+    Call<Airline> saveAirline (@Body Airline airline);
 }
