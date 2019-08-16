@@ -8,6 +8,8 @@ import com.uca.aerolineaapp.models.Login;
 import com.uca.aerolineaapp.models.LoginRequest;
 import com.uca.aerolineaapp.models.User;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -37,6 +39,12 @@ public interface ApiInterface {
     @POST("Flights")
     Call<Flight> saveFlight (@Body Flight flight);
 
+    @GET("Flight")
+    Call<List<Flight>> getFlihts(String auth);
+
     @POST("Airlines")
     Call<Airline> saveAirline (@Body Airline airline);
+
+    @GET("Airlines")
+    Call<List<Airline>> getAirlines(String auth);
 }
