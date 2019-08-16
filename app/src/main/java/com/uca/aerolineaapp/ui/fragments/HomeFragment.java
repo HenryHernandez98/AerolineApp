@@ -19,6 +19,7 @@ import com.tumblr.remember.Remember;
 import com.uca.aerolineaapp.R;
 import com.uca.aerolineaapp.api.Api;
 import com.uca.aerolineaapp.constants.Constants;
+import com.uca.aerolineaapp.models.Airline;
 import com.uca.aerolineaapp.models.Flight;
 import com.uca.aerolineaapp.ui.adapters.FlightAdapter;
 
@@ -33,6 +34,7 @@ import retrofit2.Response;
 public class HomeFragment extends Fragment {
     private RecyclerView recyclerView;
     private List<Flight> flights = new ArrayList<>();
+    private List<Airline> airlines = new ArrayList<>();
 
 
     public HomeFragment() {
@@ -54,12 +56,25 @@ public class HomeFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setHasFixedSize(true);
 
+        Call<List<Airline>> getAirlines = Api.instance().getAirlines(Remember.getString("access_token", ""));
+        getAirlines.enqueue(new Callback<List<Airline>>() {
+            @Override
+            public void onResponse(Call<List<Airline>> call, Response<List<Airline>> response) {
+                airlines= response.body();
+            }
+
+            @Override
+            public void onFailure(Call<List<Airline>> call, Throwable t) {
+
+            }
+        });
+
         Call<List<Flight>> getFlights = Api.instance().getFlights(Remember.getString("access_token", ""));
         getFlights.enqueue(new Callback<List<Flight>>() {
             @Override
             public void onResponse(@NonNull Call<List<Flight>> call, @NonNull Response<List<Flight>> response) {
                     flights = response.body();
-                FlightAdapter flightAdapter = new FlightAdapter(flights, getContext());
+                FlightAdapter flightAdapter = new FlightAdapter(flights, getContext(), airlines);
                 recyclerView.setAdapter(flightAdapter);
             }
 

@@ -1,5 +1,6 @@
 package com.uca.aerolineaapp.ui.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -130,6 +131,9 @@ public class FlightActivity extends AppCompatActivity {
                         flight.setArriveDateTime(arriveDateTime.getText().toString());
                         flight.setAvailability(availability);
                         Toast.makeText(getApplicationContext(), "Se registró correctamente el vuelo", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(intent);
+                        finish();
                     } else {
                         Toast.makeText(getApplicationContext(), "Error al registrar el vuelo", Toast.LENGTH_SHORT).show();
                     }
