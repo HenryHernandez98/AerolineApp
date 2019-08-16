@@ -99,7 +99,7 @@ public class SingUpActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),"Can't leave empty fields",Toast.LENGTH_SHORT).show();
         }else {
             final User user = new User();
-            Identity identity = new Identity();
+            final Identity identity = new Identity();
             final Login login = new Login();
 
             login.setUserName(userName.getText().toString());
@@ -124,7 +124,18 @@ public class SingUpActivity extends AppCompatActivity {
                 public void onResponse(@NonNull Call<Identity> call, @NonNull Response<Identity> response) {
                     if(response.code()==200){
                         assert response.body() != null;
-                        user.setIdIdentity(response.body().getIdIdentity());
+                        Identity id = new Identity();
+                        id.setNationality(nationality.toString());
+                        id.setBirthPlace(birthPlace.getText().toString());
+                        id.setPassportNumber(passport.getText().toString());
+                        id.setIssuePassPortDate(issueDate.getText().toString());
+                        id.setExpPassportDate(expDate.getText().toString());
+                        id.setBirthDate(birthDate.getText().toString());
+                        id.setIdentification(identification.getText().toString());
+                        id.setSex(sex.getText().toString());
+                        id.setCountryCode(countryCode.toString());
+                        Api.instance().saveIdentities(id);
+
                         Toast.makeText(getApplicationContext(), "Success to Register Identity", Toast.LENGTH_LONG).show();
                     }
                     else{
@@ -148,7 +159,11 @@ public class SingUpActivity extends AppCompatActivity {
                     if (response.isSuccessful()) {
                         Toast.makeText(getApplicationContext(), "Success to Register Login", Toast.LENGTH_LONG).show();
                         assert response.body() != null;
-                        user.setIdLogin(response.body().getIdLogin());
+                        Login log = new Login();
+                        log.setUserName(userName.getText().toString());
+                        log.setPassword(password.getText().toString());
+                        Api.instance().saveLogin(log);
+
                     } else {
                         Toast.makeText(getApplicationContext(), "Login Failed", Toast.LENGTH_SHORT).show();
 
@@ -168,7 +183,15 @@ public class SingUpActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(@NonNull Call<User> call, @NonNull Response<User> response) {
                     if(response.code()==200){
+                        User us = new User();
+                        us.setEmail(email.getText().toString());
+                        us.setName(name.getText().toString());
+                        us.setLastName(lastName.getText().toString());
+                        us.setRole(role.toString());
+                        Api.instance().saveUser(us);
+
                         Toast.makeText(getApplicationContext(), "Success to create user", Toast.LENGTH_LONG).show();
+
                     }
                     else{
                         Toast.makeText(getApplicationContext(), "Fail user", Toast.LENGTH_LONG).show();
